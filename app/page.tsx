@@ -1,35 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 const projects = [
   {
-    title: "Signal Dashboard - PLACEHOLDER (DIDN'T DO)",
-    description: "Real-time product analytics with live rooms and role-based access.",
-    tags: ["Next.js", "Node.js", "WebSockets", "Tailwind"],
-    link: "#",
-  },
-  {
-    title: "Studio Site - PLACEHOLDER (DIDN'T DO)",
-    description: "A minimal marketing site with modular content blocks and MDX.",
-    tags: ["React", "TypeScript", "MDX", "SEO"],
-    link: "#",
-  },
-  {
-    title: "Edge Tools - PLACEHOLDER (DIDN'T DO)",
-    description: "APIs and CLI tools for scheduled jobs, queues, and monitoring.",
-    tags: ["Node.js", "tRPC", "Postgres", "Workers"],
-    link: "#",
+    title: "GitHub Contribution Visualizer",
+    description:
+      "A web app that fetches and visualizes any GitHub user's contribution history as a heatmap, built with Python, Flask, and BeautifulSoup.",
+    tags: ["Python", "Flask", "BeautifulSoup", "HTML/CSS"],
+    link: "/projects/github-contribution-visualizer",
   },
 ];
 
-const skills = [
-  "Django",
-  "Java",
-  "Python",
-  "Git",
-  "GitHub",
-];
+const skills = ["Django", "Java", "Python", "Git", "GitHub"];
 
 const skillsTODO = [
   "APIs & Auth",
@@ -81,7 +65,7 @@ export default function Home() {
           <div className="space-y-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-sky-400 to-cyan-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black shadow-[0_8px_30px_rgba(56,189,248,0.35)]">
               <span className="h-2 w-2 rounded-full bg-black/60" aria-hidden />
-              Ashton Lane
+              <span className="px-1">Ashton Lane</span>
             </span>
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               <span className="bg-gradient-to-r from-sky-300 via-indigo-200 to-white bg-clip-text text-transparent">
@@ -110,16 +94,33 @@ export default function Home() {
         <section className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,360px)]">
           <div className={`rounded-3xl p-8 ${panelSurface}`}>
             <p className="text-sm text-zinc-400">About me</p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
-              Hi, my name is
-              <span className="ml-2 inline-block bg-gradient-to-r from-indigo-400 via-sky-300 to-cyan-200 bg-clip-text text-transparent">
-                Ashton Lane
-              </span>{" "}
-              and I am a graduate software engineer trying to learn and build software every day.
-            </h2>
-            <p className="mt-4 text-lg text-zinc-300">
-              I am passionate about building performant and user-friendly applications that solve real-world problems. 
-            </p>
+            <div className="mt-3 text-lg leading-relaxed text-zinc-300 sm:text-xl">
+              <div className="relative mb-3 h-36 w-36 float-none overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500/30 via-sky-400/20 to-cyan-300/20 ring-1 ring-white/10 sm:float-right sm:ml-5 sm:mb-3 sm:h-44 sm:w-44">
+                <div className="absolute inset-0 flex items-center justify-center text-3xl font-semibold text-white/80 sm:text-4xl">
+                  AL
+                </div>
+                <img
+                  src="/portrait2.png"
+                  alt="Portrait of Ashton Lane"
+                  className="relative z-10 h-full w-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <h2 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
+                Hi, my name is{" "}
+                <span className="bg-gradient-to-r from-indigo-400 via-sky-300 to-cyan-200 bg-clip-text text-transparent">
+                  Ashton Lane
+                </span>{" "}
+                and I am a graduate software engineer trying to learn and build
+                software every day.
+              </h2>
+              <p className="mt-4 text-lg text-zinc-300">
+                I am passionate about building performant and user-friendly
+                applications that solve real-world problems.
+              </p>
+            </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#projects"
@@ -137,49 +138,73 @@ export default function Home() {
           </div>
 
           <div className="grid w-full max-w-[360px] gap-4">
-            <div className={`relative grid aspect-square content-start gap-3 rounded-2xl p-5 ${tileSurface}`}>
+            <div
+              className={`relative grid aspect-square content-start gap-3 rounded-2xl p-5 ${tileSurface}`}
+            >
               <div className="flex items-center justify-between">
                 <p className="text-sm text-zinc-400">Currently</p>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-200 ring-1 ring-white/10">Working On</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-200 ring-1 ring-white/10">
+                  Working On
+                </span>
               </div>
-              <h3 className="text-xl font-semibold leading-snug text-white sm:text-2xl">
-                Shipping features at my 9-5
-              </h3>
               <ul className="space-y-2 text-sm text-zinc-200">
                 <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                  <span>Django app releases with user-facing polish and faster delivery.</span>
+                  <span
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300"
+                    aria-hidden
+                  />
+                  <span>
+                    Django app releases with user-facing polish and faster
+                    delivery.
+                  </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                  <span>Building reusable UI patterns so teams can ship quicker.</span>
+                  <span
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300"
+                    aria-hidden
+                  />
+                  <span>
+                    Building reusable UI patterns so teams can ship quicker.
+                  </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                  <span
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300"
+                    aria-hidden
+                  />
                   <span>Iterating on UX details to reduce friction.</span>
                 </li>
               </ul>
             </div>
-            <div className={`relative grid aspect-square content-start gap-3 rounded-2xl p-5 ${tileSurface}`}>
+            <div
+              className={`relative grid aspect-square content-start gap-3 rounded-2xl p-5 ${tileSurface}`}
+            >
               <div className="flex items-center justify-between">
                 <p className="text-sm text-zinc-400">Personal builds</p>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-zinc-200 ring-1 ring-white/10">Highlights</span>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-200 ring-1 ring-white/10">
+                  Highlights
+                </span>
               </div>
-              <h3 className="text-xl font-semibold leading-snug text-white sm:text-2xl">
-                Experiments and side projects
-              </h3>
               <ul className="space-y-2 text-sm text-zinc-200">
                 <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300" aria-hidden />
-                  <span>ML project for pollution-source localisation using quadcopter sensor data.</span>
+                  <span
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300"
+                    aria-hidden
+                  />
+                  <span>
+                    ML project for pollution-source localisation using
+                    quadcopter sensor data.
+                  </span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300" aria-hidden />
-                  <span>Small app collection (including the classic TODO) to practice delivery and testing.</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300" aria-hidden />
-                  <span>Ongoing UI experiments to keep skills sharp.</span>
+                  <span
+                    className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300"
+                    aria-hidden
+                  />
+                  <span>
+                    Small app collection (including the classic TODO) to
+                    practice delivery and testing.
+                  </span>
                 </li>
               </ul>
             </div>
@@ -189,7 +214,9 @@ export default function Home() {
         <section id="skills" className="space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="text-xl font-semibold text-white">Current Skills</h3>
-            <span className="text-sm text-zinc-400">Focused on continuous learning</span>
+            <span className="text-sm text-zinc-400">
+              Focused on continuous learning
+            </span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((skill) => (
@@ -205,8 +232,12 @@ export default function Home() {
 
         <section id="skills" className="space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-white">Skills I'm working towards</h3>
-            <span className="text-sm text-zinc-400">Currently or in the near future</span>
+            <h3 className="text-xl font-semibold text-white">
+              Skills I'm working towards
+            </h3>
+            <span className="text-sm text-zinc-400">
+              Currently or in the near future
+            </span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {skillsTODO.map((skillsTODO) => (
@@ -219,7 +250,6 @@ export default function Home() {
             ))}
           </div>
         </section>
-
 
         <section id="projects" className="space-y-6">
           <div className="flex items-center justify-between">
@@ -235,7 +265,9 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/5 opacity-0 transition duration-300 group-hover:opacity-100" />
                 <div className="relative flex h-full flex-col gap-4">
                   <div className="flex items-center justify-between gap-3">
-                    <h4 className="text-lg font-semibold text-white">{project.title}</h4>
+                    <h4 className="text-lg font-semibold text-white">
+                      {project.title}
+                    </h4>
                     <span className="rounded-full border border-zinc-700 px-3 py-1 text-xs uppercase tracking-wide text-zinc-300">
                       Build
                     </span>
@@ -252,13 +284,13 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-zinc-200">
-                    <a
+                    <Link
                       href={project.link}
                       className="inline-flex items-center gap-2 transition hover:text-white"
                     >
                       View details
                       <span aria-hidden>→</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -281,9 +313,15 @@ export default function Home() {
                 Close
               </button>
               <div className="space-y-2">
-                <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">Contact</p>
-                <h3 className="text-2xl font-semibold text-white">Let&apos;s connect</h3>
-                <p className="text-sm text-zinc-300">Pick a channel and I&apos;ll respond soon.</p>
+                <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+                  Contact
+                </p>
+                <h3 className="text-2xl font-semibold text-white">
+                  Let&apos;s connect
+                </h3>
+                <p className="text-sm text-zinc-300">
+                  Pick a channel and I&apos;ll respond soon.
+                </p>
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <a
@@ -293,7 +331,12 @@ export default function Home() {
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
                   aria-label="GitHub profile"
                 >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M12 2C6.48 2 2 6.58 2 12.23c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05.8-.23 1.66-.35 2.52-.35.86 0 1.72.12 2.52.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.02 1.63 1.02 2.75 0 3.94-2.33 4.8-4.56 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.48A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
@@ -308,7 +351,12 @@ export default function Home() {
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
                   aria-label="LinkedIn profile"
                 >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
                     <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.08 1 2.5 1s2.48 1.12 2.48 2.5ZM.24 8.5h4.53V23H.24V8.5Zm7.34 0H12v2h.06c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.54 4.78 5.85V23h-4.52v-7.3c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V23H7.58V8.5Z" />
                   </svg>
                 </a>
@@ -319,7 +367,12 @@ export default function Home() {
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
                   aria-label="Email Ashton"
                 >
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="currentColor"
+                  >
                     <path d="M3 4.75A2.75 2.75 0 0 1 5.75 2h12.5A2.75 2.75 0 0 1 21 4.75v14.5A2.75 2.75 0 0 1 18.25 22H5.75A2.75 2.75 0 0 1 3 19.25V4.75Zm2.75-.25a.75.75 0 0 0-.75.75v.26l7 4.38 7-4.38V5.25a.75.75 0 0 0-.75-.75H5.75Zm13.5 3.64-6.41 4.01a.75.75 0 0 1-.78 0L5.65 8.14v11.11c0 .41.34.75.75.75h12.2c.41 0 .75-.34.75-.75V8.14Z" />
                   </svg>
                 </a>
@@ -328,7 +381,10 @@ export default function Home() {
           </div>
         )}
 
-        <footer id="contact" className="flex items-center justify-center gap-4 border-t border-zinc-800 pt-10 pb-6">
+        <footer
+          id="contact"
+          className="flex items-center justify-center gap-4 border-t border-zinc-800 pt-10 pb-6"
+        >
           <a
             href="https://github.com/Ashton321"
             target="_blank"
@@ -336,8 +392,17 @@ export default function Home() {
             className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
             aria-label="GitHub profile"
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-              <path fillRule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.23c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05.8-.23 1.66-.35 2.52-.35.86 0 1.72.12 2.52.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.02 1.63 1.02 2.75 0 3.94-2.33 4.8-4.56 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.48A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" clipRule="evenodd" />
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2C6.48 2 2 6.58 2 12.23c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05.8-.23 1.66-.35 2.52-.35.86 0 1.72.12 2.52.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.02 1.63 1.02 2.75 0 3.94-2.33 4.8-4.56 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.48A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
+                clipRule="evenodd"
+              />
             </svg>
           </a>
           <a
@@ -347,7 +412,12 @@ export default function Home() {
             className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
             aria-label="LinkedIn profile"
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="currentColor"
+            >
               <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.08 1 2.5 1s2.48 1.12 2.48 2.5ZM.24 8.5h4.53V23H.24V8.5Zm7.34 0H12v2h.06c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.54 4.78 5.85V23h-4.52v-7.3c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V23H7.58V8.5Z" />
             </svg>
           </a>
@@ -358,7 +428,12 @@ export default function Home() {
             className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black ring-1 ring-zinc-300 transition hover:bg-zinc-200 hover:text-black"
             aria-label="Email Ashton"
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="currentColor"
+            >
               <path d="M3 4.75A2.75 2.75 0 0 1 5.75 2h12.5A2.75 2.75 0 0 1 21 4.75v14.5A2.75 2.75 0 0 1 18.25 22H5.75A2.75 2.75 0 0 1 3 19.25V4.75Zm2.75-.25a.75.75 0 0 0-.75.75v.26l7 4.38 7-4.38V5.25a.75.75 0 0 0-.75-.75H5.75Zm13.5 3.64-6.41 4.01a.75.75 0 0 1-.78 0L5.65 8.14v11.11c0 .41.34.75.75.75h12.2c.41 0 .75-.34.75-.75V8.14Z" />
             </svg>
           </a>
