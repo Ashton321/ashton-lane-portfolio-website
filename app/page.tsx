@@ -11,6 +11,17 @@ const projects = [
     tags: ["Python", "Flask", "BeautifulSoup", "HTML/CSS"],
     link: "/projects/github-contribution-visualizer",
   },
+
+
+  {
+    title: "LLM Token Visualizer",
+    description:
+      "A web app that tokenises any text using OpenAI's tiktoken library, visualising encoded token IDs and decoded chunks with estimated API cost per model.",
+    tags: ["Python", "Flask", "tiktoken", "Bootstrap"],
+    link: "/projects/token-counter",
+  },
+
+
 ];
 
 const skills = ["Django", "Java", "Python", "Git", "GitHub"];
