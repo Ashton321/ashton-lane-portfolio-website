@@ -124,12 +124,11 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-indigo-400 via-sky-300 to-cyan-200 bg-clip-text text-transparent">
                   Ashton Lane
                 </span>{" "}
-                and I am a graduate software engineer trying to learn and build
-                software every day.
+  and I'm a graduate software engineer focused on building user friendly applications and continuously growing my skills.
               </h2>
               <p className="mt-4 text-lg text-zinc-300">
-                I am passionate about building performant and user-friendly
-                applications that solve real-world problems.
+                I am passionate about building performant and user friendly
+                applications that solve real-world problems, or teach me new skills.
               </p>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
