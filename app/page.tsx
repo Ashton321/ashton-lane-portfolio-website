@@ -21,6 +21,13 @@ const projects = [
     link: "/projects/token-counter",
   },
 
+  {
+    title: "Reddit Pain Miner",
+    description:
+      "A tool that pulls recent posts from any subreddit and surfaces real user pain signals — showing titles, body text, and direct links to the original Reddit thread.",
+    tags: ["Python", "Flask", "Requests", "BeautifulSoup", "HTML/CSS"],
+    link: "/projects/reddit-pain-miner",
+  },
 
 ];
 
