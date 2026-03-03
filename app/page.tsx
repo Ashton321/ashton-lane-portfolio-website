@@ -241,6 +241,15 @@ export default function Home() {
                       LLM Token Visualiser – OpenAI tokenisation explorer with cost estimation.
                     </span>
                   </li>
+                  <li className="flex gap-2">
+                    <span
+                      className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-300"
+                      aria-hidden
+                    />
+                    <span>
+                      Reddit Pain Miner – surfaces real user pain signals from any subreddit.
+                    </span>
+                  </li>
               </ul>
             </div>
           </div>
