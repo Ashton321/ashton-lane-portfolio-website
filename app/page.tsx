@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { blogPosts } from "./data/blog";
 
 const projects = [
   {
@@ -144,6 +145,12 @@ export default function Home() {
                 className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-zinc-200"
               >
                 View projects
+              </a>
+              <a
+                href="/blog"
+                className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-zinc-200"
+              >
+                Blog
               </a>
               <a
                 href="#skills"
@@ -338,6 +345,82 @@ export default function Home() {
                   </div>
                 </div>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="blog" className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-white">Blog</h3>
+            <span className="text-sm text-zinc-400">Thoughts and write-ups</span>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {blogPosts.map((post) => (
+              <article
+                key={post.title}
+                className={`group relative overflow-hidden rounded-3xl p-6 transition hover:-translate-y-1 hover:ring-sky-300/60 ${tileSurface}`}
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/5 opacity-0 transition duration-300 group-hover:opacity-100" />
+                <div className="relative flex h-full flex-col gap-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <h4 className="text-lg font-semibold text-white leading-snug">{post.title}</h4>
+                    <span className="shrink-0 rounded-full border border-zinc-700 px-3 py-1 text-xs uppercase tracking-wide text-zinc-300">
+                      Post
+                    </span>
+                  </div>
+                  <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">{post.date}</p>
+                  <p className="text-sm text-zinc-300">{post.excerpt}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-200 ring-1 ring-zinc-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-zinc-200">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 transition hover:text-white"
+                    >
+                      Read post
+                      <span aria-hidden>→</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-white">Upcoming posts</h3>
+            <span className="text-sm text-zinc-400">Topics on the list</span>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "LLMs & Generative AI",
+              "Cloud Architecture",
+              "Kubernetes & Container Orchestration",
+              "DevOps",
+              "Observability & Distributed Systems Debugging",
+              "Event-Driven Architecture",
+              "Microservice Architecture",
+              "Data Engineering",
+              "Databases",
+              "Cybersecurity",
+              "System Design & Trade-off Thinking",
+            ].map((topic) => (
+              <div
+                key={topic}
+                className={`flex items-center gap-3 rounded-2xl px-5 py-4 text-sm font-medium text-zinc-400 ${tileSurface}`}
+              >
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-600" aria-hidden />
+                {topic}
+              </div>
             ))}
           </div>
         </section>
