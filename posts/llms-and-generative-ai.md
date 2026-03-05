@@ -1,66 +1,48 @@
 ---
 title: "LLMs & Generative AI"
 date: "March 2026"
-excerpt: "A mid-level walkthrough of how large language models actually work — from tokenisation and transformers to RAG, alignment, and where they fit inside real software systems."
+excerpt: "A high-level walkthrough of how large language models work — from tokenisation and transformers to training and inference."
 tags: ["LLMs", "AI", "Machine Learning"]
 ---
 
-## What Is a Large Language Model?
+## **Introduction to LLMs and Generative AI**
 
-TODO — cover what defines an LLM (scale of parameters, training data), how they differ from earlier ML models, and why "predicting the next token" produces something that feels like reasoning.
+LLMs work by predicting the next most probable **token** in a sequence. While the initial learning phase (**training**) involves processing vast amounts of data in parallel using the **Transformer architecture**, the actual text generation you see is fundamentally **sequential**. The process begins with the model processing your input, selecting the highest probability token, and outputting it. This newly selected token is then immediately fed back into the model, extending the context. The model then processes the full, updated sequence to predict the next token, and this loop repeats, token-by-token, until the sequence is complete. The resulting output is a string of tokens, each generated based on a statistical prediction of what should follow all the preceding tokens in the conversation.
+## **The Transformer — What It Is and How It Works (High Level)**
 
-## The Transformer Architecture
+Before the invention of the **transformer**, datasets used to train LLMs were processed **sequentially**, which was slow and computationally expensive. The transformer, which was invented in **2017** by a team working for **Google**, allowed for data to be processed in **parallel** rather than sequentially. Transformers use a **self-attention mechanism** that weights the importance of different words in a text simultaneously, allowing for better understanding of context, and significantly faster processing times. This breakthrough in processing speed significantly reduced model training times and facilitated the Large Language Models we have today.
 
-TODO — explain the attention mechanism at a conceptual level, why transformers replaced RNNs, and what "self-attention" actually means without getting lost in the maths.
+## **Tokenisation**
 
-## Tokenisation
+**Tokenisation** is a fundamental step in data processing. It involves breaking input text into "tokens" or chunks, such as words, characters, or subwords, that a machine can understand.
+Because machine learning models cannot process text directly, these tokens are mapped to unique **numerical IDs** from a predefined vocabulary. For example, the string "Hello World!" might be split into four tokens: "Hello", " ", "World", and "!". These are then converted into IDs like 432, 4, 6141, and 45. When the model generates a response, this process is reversed: the predicted numerical IDs are mapped back into human-readable text.
 
-TODO — cover how raw text is broken into tokens, why the choice of tokeniser matters, and the practical implications (token limits, non-English text, code vs prose).
+## **Pre-training**
 
-## Pre-training: Learning from the Internet
+Before an LLM is able to generate text, it first has to know how language works. This process is known as **pre-training**, which is extremely computationally intensive. This process first begins with gathering as much high quality data  (text in this situation) as possible. The dataset created ideally contains highly diverse data that contains a wide variety of information.
 
-TODO — describe next-token prediction as the pre-training objective, the role of data scale and diversity, and what a model actually "knows" after pre-training.
+Following this, the data collected must be converted into numbers, which is done through **tokenisation**, as explained above. Once the text is tokenised, the neural network learns to predict the next token based on the context it has. Initially, the model will make random, terrible, predictions, but as training progresses, it learns to assign probabilities to next tokens. Once the “correct” token is identified, the model goes through a process called **backpropagation**, which tunes its billions of parameters to reinforce the correct prediction and reduce the likelihood of incorrect predictions. With large datasets, this process is repeated billions of times.
 
-## Fine-tuning and RLHF
+## **Post Training: Fine-tuning and RLHF**
 
-TODO — explain supervised fine-tuning, reinforcement learning from human feedback, and why these steps are what turn a raw language model into something like ChatGPT.
+After **pre-training**, while the model is able to make “correct” predictions, it is still unrefined. To make them useful and reliable, they go through **post-training**, which is where they are **fine-tuned** on specialised datasets.
 
-## Embeddings and Vector Representations
+Specialised datasets are created, which contain structured examples of how the model should respond in different situations. During post-training, **reinforcement learning from human feedback (RLHF)** takes place as well. Workers flag unhelpful or problematic predictions, which makes the AI more likely to give answers users would prefer. 
 
-TODO — cover how text becomes a point in high-dimensional space, why semantically similar phrases cluster together, and where embeddings show up in practice (search, RAG, classification).
+## **Inference**
 
-## Prompt Engineering
+**Inference** is the process of how the model generates new text. Inference can be performed at any stage, and usually is, as it is used to evaluate how well the model has learned. When given an input sequence of tokens, the model assigns probabilities to all possible text tokens from its alphabet, based on the patterns it has learned during training. Now you may think the model would always pick the most likely token/ the token with the highest probability of being the “correct” next token. This is not true, as the model chooses based on the **probability distribution**. This is similar to flipping a biased coin or a weighted dice, despite a specific outcome being likely, sometimes the unlikely pick will be chosen. This process is why the same input from the user doesn’t result in the same output. Additionally, this probabilistic choice can be adjusted for specific purposes. For example, when dealing with code or math, the most “correct” answer is favoured heavily, with no variation wanted. However, when trying to write creative texts, sometimes less “correct” selections are favourable. 
 
-TODO — introduce zero-shot, few-shot, and chain-of-thought prompting. Explain why prompt structure meaningfully changes outputs and what that implies about how models process instructions.
+## **To End Off**
 
-## Retrieval-Augmented Generation (RAG)
+When writing the title for this blog post I acknowledged that it is an impossibly large topic to cover, especially in a short form post like this. I did my best to give a high level overview of the functionality of LLMs and generative AI and what it means. 
 
-TODO — explain the problem RAG solves (stale knowledge, hallucination on specific facts), how a vector store fits in, and the basic retrieval-then-generate pipeline.
+**Key points to remember:**
 
-## Context Windows and Their Limits
-
-TODO — cover what the context window is, why length matters for reasoning quality, and practical strategies like chunking, summarisation, and sliding windows.
-
-## Hallucination — Why LLMs Make Things Up
-
-TODO — explain why hallucination is a fundamental property of probabilistic text generation, not a bug to be fixed, and cover mitigation strategies (grounding, RAG, confidence signalling).
-
-## Inference: From Prompt to Token
-
-TODO — walk through what happens at inference time — sampling strategies, temperature, top-p, and how these parameters trade off creativity vs determinism.
-
-## Open Source vs Proprietary Models
-
-TODO — compare the tradeoffs: cost, capability, control, privacy, and deployment complexity. Cover the main open-weight families (Llama, Mistral) vs API providers (OpenAI, Anthropic, Google).
-
-## Cost, Latency, and the Trade-offs of Scale
-
-TODO — discuss the practical economics of running LLMs: API token pricing, self-hosting costs, quantisation, and when a smaller model is the right call.
-
-## AI Safety, Alignment, and Guardrails
-
-TODO — introduce alignment as a problem (getting models to do what you intend), cover Constitutional AI and RLHF as approaches, and touch on output filtering and red-teaming.
-
-## Where LLMs Fit Inside a Real Software System
-
-TODO — cover orchestration patterns (LangChain, function calling, tool use), the agent loop, and how to think about LLMs as a probabilistic component in an otherwise deterministic system.
+- **Generative AI** is the broad field, **LLMs (Large Language Models)** are a subset that specialise in text
+- The **Transformer model** (Google, 2017) enables parallel processing and speeds up training using a **self-attention mechanism**.
+- **Tokenisation** converts text into numerical IDs ("tokens") for machine processing.
+- **Training is two-step:**
+	- **Pre-training:** Learns language structure by predicting the next token from massive datasets (involves backpropagation).
+	- **Post-training (Fine-tuning & RLHF):** Refines the model using specialized data and **Reinforcement Learning with Human Feedback (RLHF)** to align with user preferences.
+- LLMs predict the next token **probabilistically** during **Inference** (generation), assigning probabilities to potential next words.
