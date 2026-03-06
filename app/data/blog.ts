@@ -20,4 +20,12 @@ export const blogPosts: BlogPostMeta[] = [
       "A high-level walkthrough of how large language models work — from tokenisation and transformers to training and inference.",
     tags: ["LLMs", "AI", "Machine Learning"],
   },
+  {
+    slug: "databases",
+    title: "Databases",
+    date: "March 2026",
+    excerpt:
+      "A breakdown of what databases are, how they work, and when to use relational vs NoSQL — including the role of the DBMS and cloud storage.",
+    tags: ["Databases", "SQL", "NoSQL"],
+  },
 ];

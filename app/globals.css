@@ -122,3 +122,37 @@ body {
   border-color: #3f3f46; /* zinc-700 */
   margin: 2rem 0;
 }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.prose thead {
+  border-bottom: 2px solid #3f3f46; /* zinc-700 */
+}
+
+.prose th {
+  color: #f4f4f5; /* zinc-100 */
+  font-weight: 600;
+  text-align: left;
+  padding: 0.6rem 1rem;
+}
+
+.prose td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #27272a; /* zinc-800 */
+  vertical-align: top;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose img {
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  max-width: 100%;
+}

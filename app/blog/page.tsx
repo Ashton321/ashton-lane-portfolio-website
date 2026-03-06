@@ -73,7 +73,6 @@ export default function BlogPage() {
               "Event-Driven Architecture",
               "Microservice Architecture",
               "Data Engineering",
-              "Databases",
               "Cybersecurity",
               "System Design & Trade-off Thinking",
             ].map((topic) => (

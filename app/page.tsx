@@ -402,7 +402,6 @@ export default function Home() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              "LLMs & Generative AI",
               "Cloud Architecture",
               "Kubernetes & Container Orchestration",
               "DevOps",
@@ -410,7 +409,6 @@ export default function Home() {
               "Event-Driven Architecture",
               "Microservice Architecture",
               "Data Engineering",
-              "Databases",
               "Cybersecurity",
               "System Design & Trade-off Thinking",
             ].map((topic) => (
